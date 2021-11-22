@@ -1,0 +1,113 @@
+
+<span class="float-start ml-3">
+    <select class="form-select my-1" [disabled]="!gameAtStart" (change)="setTimer($event.target.value)">
+        <!-- <option disabled selected value="-1">Laikas uždaviniui: 10 sek.</option> -->
+        <option selected value="10">Spręsti per 10 sek.</option>
+        <option value="15">Spręsti per 15 sek.</option>
+        <option value="20">Spręsti per 20 sek.</option>
+        <option value="30">Spręsti per 30 sek.</option>
+    </select>
+</span>
+<span class="float-start">
+    <select class="form-select my-1 mh-3" [disabled]="!gameAtStart" (change)="setDaugyba($event.target.value)">
+        <!-- <option disabled selected value="-1">Daugyba iki</option> -->
+        <option value="2">Daugyba iki 2 </option>
+        <option value="3">Daugyba iki 3</option>
+        <option value="4">Daugyba iki 4</option>
+        <option value="5">Daugyba iki 5</option>
+        <option value="6">Daugyba iki 6</option>
+        <option value="7">Daugyba iki 7 </option>
+        <option value="8">Daugyba iki 8</option>
+        <option selected value="9">Daugyba iki 9</option>
+    </select>
+</span>
+<!-- <span class="float-start">
+    <select class="form-select my-1 mh-3" [disabled]="!gameAtStart" (change)="setAmount($event.target.value)">
+        <option disabled selected value="-1">Uždavinių kiekis</option>
+        <option value="10">10 </option>
+        <option value="20">20</option>
+        <option value="30">30</option>
+        <option value="50">50</option>
+        <option value="70">70</option>
+    </select>
+</span> -->
+<div class="col-md-12 mt-3">
+    <div class="card mt-5 " >
+        <div class="card-header text-center">
+            <div class="row">
+                <div class="col-sm-0 col-md-2 text-center">
+                    <!-- <span class="badge bg-warning text-dark float-start mt-3 mx-3">Liko laiko: {{time}} s</span>  -->
+                </div>
+                <div class="col-sm-12 col-md-8 text-center" [ngClass]="{'col-md-8': innerWidth >= 760,
+                    'col-md-6': innerWidth < 760}">
+                    <h1 *ngIf="gameAtStart">Išspręsk uždavinį per {{count}} sekundžių</h1>
+                    <h1 *ngIf="!gameAtStart">Liko laiko: {{time}} s</h1>
+                </div>
+                <div class="col-sm-12 col-md-2 text-center" [ngClass]="{'col-md-2': innerWidth >= 760,
+                    'col-md-6': innerWidth < 760}">
+                    <button 
+                        class="btn btn-success float-end mt-2" 
+                        (click)="gameActivator()" 
+                        [innerHTML]="buttonValue"
+                        [ngClass]="{'btn-success': gameAtStart,
+                                    'btn-danger': !gameAtStart}"> 
+                        
+                    </button>
+                </div>
+          </div>
+        </div>
+        <div class="card-body text-center uzdavinysContainer" >
+           <div *ngIf="!gameEnd && !gameAtStart" class="uzdavinys text-center">
+               <div class="d-flex justify-content-center">{{uzdaviniai[uzdNr].uzdavinys}}</div>
+            </div> 
+  
+           <div *ngIf="gameAtStart && !gameEnd" class="gameStart align-middle">Spauskite "Pradėti"</div> 
+           
+
+           <div *ngIf="gameAtStart && gameEnd" class="gameStart">
+                <div class="row">
+                        <div>
+                        Viso bandymų: {{visoSprestaUzd}}
+                        </div>
+                        <div>
+                        Atsakyta teisingai: {{teisingiUzd}}
+                        </div>
+                </div>
+           </div> 
+        </div>
+    </div>
+    <div class="row">
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: {{progBar}}%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" >Liko: {{visoUzd}}</div>
+        </div>
+         
+      </div>
+
+</div>
+
+
+
+  <div class="row mt-5 mb-3">
+      <div class="col-md-4"></div>
+        <div class="col-md-4" >
+            <!-- <input type="text" class="form-control atsakymas_pass text-center mx-auto" *ngIf="atsakymas =='?'"
+            readonly
+            [(ngModel)]="atsakymas"> -->
+            <!-- <input type="text" maxlength="2" class="form-control atsakymas text-center mx-auto" *ngIf="atsakymas !='?'"  -->
+            <input type="text" maxlength="2" class="form-control atsakymas text-center mx-auto"
+            #answerInput
+            [readonly]="readOnly"
+            [disabled]="gameAtStart"
+            (keyUp.Enter)="pateiktiAtsakyma(atsakymas)"
+            [(ngModel)]="atsakymas"
+            [ngClass]="{'teisingas': teisingas,
+                        'neteisingas': neteisingas,
+                        'inputRedBorder': time == 5 || time == 3 || time == 1
+                        }"
+            (keydown)="invalidChars($event)">
+      </div>
+      <div class="col-md-4"></div>
+   </div>
+
+
+  

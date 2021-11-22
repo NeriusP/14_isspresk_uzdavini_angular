@@ -1,0 +1,160 @@
+
+ button{
+    width: 100%;     
+}
+
+
+
+.uzdavinysContainer {
+    display: flex;
+    font-size: 120px;
+    font-weight: 500;
+    width: auto;
+    height: 200px;
+}
+
+
+.uzdavinys{
+    /* display: flex; */
+    /* max-height: 590px; */
+    margin: auto;
+    padding-bottom: 20px; 
+}
+
+.atsakymas {
+    font-size: 120px;
+    font-weight: 500;
+    width: 150px;
+    height: 150px; 
+    line-height: 150px;
+    padding: 0 0 20px;
+    caret-color: transparent;
+}
+
+ .atsakymas_pass {
+    color: red;    
+} 
+
+.gameStart {
+    font-size: 9vw;
+    font-weight: 400;
+    margin: auto;
+}
+
+input:read-only {
+    background-color: white;
+  }
+
+input.teisingas{
+    color: green;
+}
+
+input.neteisingas{
+    color: red;
+}
+
+input.inputRedBorder{
+    border: 5px solid red;
+}
+
+input.backgrounRed{
+    background-color: red;
+}
+
+.form-control:focus {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number]{
+    -moz-appearance: textfield;
+}
+
+@media (min-width: 575.98px) { 
+    h1 {
+        font-size: 4vw;
+    }
+
+    button{
+        width: 100%;     
+    }
+    .uzdavinysContainer {
+       
+        font-size: 150px;
+        font-weight: 500;
+        height: 250px;
+    }
+
+    .atsakymas {
+        font-size: 150px;
+        font-weight: 500;
+        width: 180px;
+        height: 180px; 
+        line-height: 180px;    
+    }
+    .gameStart {
+        font-size: 7vw;
+    }
+ }
+
+ /* `md` applies to small devices (landscape phones, less than 768px) */
+@media (min-width: 767.98px) { 
+
+    button{
+        width: auto;     
+    }
+
+    h1 {
+        font-size: 3vw;
+    }
+
+    .uzdavinysContainer {
+        height: 300px;     
+     }
+
+    .atsakymas {
+        width: 200px;
+        height: 200px; 
+        line-height: 200px;    
+    }
+    .gameStart {
+        font-size: 7vw;
+    }
+ }
+
+ /* `lg` applies to medium devices (tablets, less than 992px) */
+@media (min-width: 991.98px)   { 
+
+    h1 {
+        font-size: 200;
+    }
+    
+    .uzdavinysContainer {
+        height: 400px;
+    }
+
+    .atsakymas {
+        width: 250px;
+        height: 250px; 
+        line-height: 250px;
+    }
+    
+    .gameStart {
+        font-size: 7w;
+    }
+ }
+
+ @media (min-width: 1600px)   { 
+    .gameStart {
+        font-size: 4vw;
+    } 
+ }
+
+
+
